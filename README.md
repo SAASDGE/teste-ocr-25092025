@@ -30,6 +30,6 @@ Para analisar a fatura e realizar a extração das informações você deve util
 1. Utilize a linguagem Python para desenvolver a solução.
 2. No mesmo README, inclua uma seção detalhada que explique claramente os passos necessários para executar o código. Certifique-se de que as instruções sejam precisas, organizadas e fáceis de entender, pois os avaliadores seguirão essa documentação.
 3. Faça um fork do repositório, para iniciar o desenvolvimento.
-4. A entrega deve ser realizada por meio de um pull request para o repositório original. Caso não consiga, os arquivos podem ser enviados para o email falecom@dg.energy, porém com penalidade de pontos.
+4. A entrega deve ser realizada por meio de um pull request para o repositório original.
 5. Abra o pull request também faltando 5 minutos para o prazo final da entrega do teste. Se o pull request for realizado antes dos 5 minutos restantes haverá eliminação do candidato.
 6. A entrega deve ser realizada até às 17h30. Caso o prazo não seja cumprido, haverá perda de pontos.
