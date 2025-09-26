@@ -9,14 +9,31 @@ pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tessera
 
 
 imagem = Image.open('fatura.jpg')
-
+# Extraindo Texto com Pytesseract
 texto_extraido = pytesseract.image_to_string(imagem)
 
-texto = texto_extraido.split('\n')
-
+#Extraindo Mes/Ano
 padrao_data = r"Referente a\s+([A-Z]{3}/\d{4})"
-match = re.search(padrao, texto_extraido)
+match = re.search(padrao_data, texto_extraido)
 
 data = {}
 
 data["Mês/Ano"] = [match.group(1)]
+
+# Extraindo Instalação
+padrao_instalacao = r"N° DA INSTALAGAO\s+(\d+)"
+match = re.search(padrao_instalacao, texto_extraido)
+if match:
+    data["Intalação"] = [match.group(1)]
+else:
+    data["Intalação"] = [None]
+
+#Extraindo Consumo
+padrao_consumo = r"Energia kWh (.*)"
+match = re.search(padrao_consumo, texto_extraido)
+if match:
+    data["Consumo"] = [match.group().split(" ")[3]]
+else:
+    data["Consumo"] = [None]
+
+print(data)
