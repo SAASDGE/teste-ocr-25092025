@@ -12,13 +12,24 @@ pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tessera
 #Colocando Imagem em Escala de Cinza
 
 def imagem_cinza(imagem):
-    imagem = cv2.imread(imagem)
-    imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
-    return imagem_cinza
+    try:
+            
+        imagem = cv2.imread(imagem)
+        imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
+        return imagem_cinza
+    
+    except Exception as e:
+        print(f"Erro ao ler a imagem: {e}")
+        return None
 
 def extrair_dados(imagem):
     # Extraindo Texto com Pytesseract
-    texto_extraido = pytesseract.image_to_string(imagem_cinza(imagem), config='--psm 6')
+    try:
+        texto_extraido = pytesseract.image_to_string(imagem_cinza(imagem), config='--psm 6')
+    except Exception as e:
+        print(f"Erro ao extrair o texto: {e}")
+        return None
+
 
     #Extraindo Mes/Ano
     padrao_data = r"([A-Z]{3}/\d{4}) (\d{2}/\d{2}/\d{4})"
@@ -75,8 +86,8 @@ def extrair_dados(imagem):
     else:
         data["Compensacao"] = [None]
 
+    #Criando DataFrame
     dataframe = pd.DataFrame(data)
-
     return dataframe
 
 
