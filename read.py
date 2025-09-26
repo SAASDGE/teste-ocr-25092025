@@ -4,16 +4,19 @@ import pytesseract
 import pandas as pd
 from PIL import Image
 import re
+import cv2
 
 pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
 
-imagem = Image.open('fatura.jpg')
+#Colocando Imagem em Escala de Cinza
+imagem = cv2.imread('fatura.jpg')
+imagem_cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 # Extraindo Texto com Pytesseract
-texto_extraido = pytesseract.image_to_string(imagem)
+texto_extraido = pytesseract.image_to_string(imagem_cinza, config='--psm 6')
 
 #Extraindo Mes/Ano
-padrao_data = r"Referente a\s+([A-Z]{3}/\d{4})"
+padrao_data = r"([A-Z]{3}/\d{4}) (\d{2}/\d{2}/\d{4})"
 match = re.search(padrao_data, texto_extraido)
 
 data = {}
@@ -25,10 +28,11 @@ else:
 
 
 # Extraindo Instalação
-padrao_instalacao = r"N° DA INSTALAGAO\s+(\d+)"
+padrao_instalacao = r"Cédigo de Débito Automatico Instalagao Vencimento Total a pagar\s*\n(.*)"
 match = re.search(padrao_instalacao, texto_extraido)
+print(match.group())
 if match:
-    data["Instalação"] = [match.group(1)]
+    data["Instalação"] = [match.group(1).split(" ")[2]]
 else:
     data["Instalação"] = [None]
 
@@ -36,12 +40,12 @@ else:
 padrao_consumo = r"Energia kWh (.*)"
 match = re.search(padrao_consumo, texto_extraido)
 if match:
-    data["Consumo"] = [match.group().split(" ")[3]]
+    data["Consumo"] = [match.group().split(" ")[6]]
 else:
     data["Consumo"] = [None]
 
 #Extraindo valor a pagar a distribuidora
-padrao_valor = r"Total a pagar\s*R\$\s*(\d.,\d{2})"
+padrao_valor = r"TOTAL\s*(\d.,\d{2})"
 match = re.search(padrao_valor, texto_extraido)
 if match:
     data["Valor"] = [match.group(1)]
@@ -57,8 +61,15 @@ if match:
 else:
     saldo_atual = None
 
+#Extraindo quantidade de energia elétrica compensada
 
+padrao_compensacao = r"Energia compensada GD II kWh\s*(\d+)"
+match = re.search(padrao_compensacao, texto_extraido)
+if match:
+    data["Compensacao"] = [match.group().split(" ")[5]]
+else:
+    data["Compensacao"] = [None]
 
+dataframe = pd.DataFrame(data)
 
-
-print(data)
+print(dataframe)
