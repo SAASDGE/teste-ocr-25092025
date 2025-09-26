@@ -43,7 +43,7 @@ Clone esse repositório com :
 git clone https://github.com/MateusMendes0/teste-ocr-25092025.git
 ```
 
-Também é necessário instalar o Tesseract para o reconhecimento do texto no diretório padrão em :
+Também é necessário instalar o Tesseract para o reconhecimento do texto no diretório padrão, disponível em :
 
 ```
 https://github.com/UB-Mannheim/tesseract/wiki
