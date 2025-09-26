@@ -25,6 +25,56 @@ Para analisar a fatura e realizar a extração das informações você deve util
 
 - Escreva a documentação do teste abaixo.
 
+###  Instalação das dependências e execução do programa
+
+Para rodar o script, abra um terminal na pasta do projeto e instale as dependências  
+
+```
+pip install -r requirements.txt
+```
+<br>
+
+Uma vez feita a instalação, basta rodar o arquivo read.py
+
+linux
+```
+python3 read.py
+```
+<br>
+
+windows
+```
+py read.py
+```
+
+### Explicação do código
+
+O código é constituído de 4 funções: 
+
+- <b>crop_img</b>: Utiliza a biblioteca ***OpenCV*** do python para recortar a imagem. Foi desenvolvida para reduzir a fatura em regiões que contém os valores-alvo e reduzir a quantidade de caracteres desnecessários no arquivo final de texto, facilitando o filtro por regex. Para visualização das imagens recortadas, altere o parâmetro 'save'.
+- <b>transcript_img</b>: Utiliza ***pytesseract*** para realizar a tarnscrição do texto de uma imagem definida como parâmetro da função.
+- <b>bill_summary</b>: Realiza o pré-processamento da fatura, cortando a imagem em regiões de interesse e transcrevendo o conteúdo para um arquivo de texto.
+- <b>pipeline</b>: É a função responsável por rodar o bill_sumary e montar o dataframe do ***Pandas*** com a estrutura desejada.
+
+<br>
+
+Em contraste à atividade anterior, dessa vez o código foi escrito de forma mais segmentada e comentada para melhorar a experiência de leitura de terceiros. 
+
+A abordagem de cortar as imagens foi escolhida para reduzir o tamanho do texto onde será realizada a busca com regex. Entretanto, essa abordagem parte do princípio que a fatura seguirá sempre na mesma estrutura. O código foi pensado única e exclusivamente para a fatura fornecida no teste.
+
+Apesar disso, o código ainda pode ser reutilizado para outras estruturas de fatura, bastando apenas que as zonas de interesse sejam redefinidas e o regex utilizado seja revisado e adaptado.
+
+Também foi implementado um requirements.txt como sugerido na entrevista técnica.
+
+Eu optei por usar apenas a função re.findall() para realizar as buscas por regex. Dessa forma, se o regex falhar não haverá quebra de código, ao invés disso a função retornará uma lista vazia.
+
+Sobre as regiões de interesse, eu optei por extrair as informações da seção de 'Valores Faturados', 'Informações Gerais' e do rodapé da fatura. A seção de valores faturados contem dados suficientes para preencher os valores de Energia Consumida e Energia compensada, além do valor total a pagar, entretando não foi dessa seção que eu retirei esse dado. Da seção de informações gerai, foi recortada apenas a primeira linha, pois essa contem o valor de crédito acumulado. O rodapé da fatura foi escolhido pois ele é a área que contem o número da instalação, data e total a pagar com o menor número de caracteres desnecessários para a pesquisa.
+
+Dessa forma, a busca com regex foi realizada com uma facilidade extremamente maior em relação ao primeiro teste. O processamento de imagens pode aumentar o custo computacional do programa, entretanto o carregamento e recorte da imagem são operações leves e seu custo computacional é compensado pelo tempo de desenvolvimento e adaptabilidade do código para outras estruturas de fatura.
+
+
+
+
 # Requisitos dos Desafios
 
 1. Utilize a linguagem Python para desenvolver a solução.
