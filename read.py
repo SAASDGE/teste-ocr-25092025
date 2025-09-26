@@ -2,7 +2,6 @@
 
 import pytesseract
 import pandas as pd
-from PIL import Image
 import re
 import cv2
 
@@ -10,7 +9,6 @@ pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tessera
 
 
 #Colocando Imagem em Escala de Cinza
-
 def imagem_cinza(imagem):
     try:
             
@@ -93,4 +91,7 @@ def extrair_dados(imagem):
 
 if __name__ == "__main__":
     df = extrair_dados('fatura.jpg')
-    print(df)
+    vertical_df = df.T.reset_index()
+    vertical_df.columns = ["Campo", "Valor"]
+
+    print(vertical_df)
