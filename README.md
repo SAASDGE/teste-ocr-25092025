@@ -23,7 +23,43 @@ Para analisar a fatura e realizar a extração das informações você deve util
 
 # Documentação do Teste
 
-- Escreva a documentação do teste abaixo.
+## Instruções para execução do código
+
+1. **Clonar repositório**:
+	```bash
+	git clone https://github.com/SAASDGE/teste-ocr-25092025.git
+	```
+2. **Navegar até o diretório do projeto**:
+	```bash
+	cd teste-ocr-25092025
+	```
+3. **Criar e ativar um ambiente virtual**:
+	```bash
+	python -m venv venv
+    # Opcionalmente:
+    python3 -m venv venv
+    # Ativar o ambiente virtual:
+	source venv/bin/activate # Linux/MacOS
+	```
+4. **Instalar as dependências necessárias**:
+	```bash
+	pip install -r requirements.txt
+	```
+5. **Instalar o pacote de idiomas do Tesseract (português)**:
+	- Ubuntu/Debian:
+	  ```bash
+	  sudo apt install tesseract-ocr-por
+	  ```
+	- Fedora:
+	  ```bash
+	  sudo dnf install tesseract-langpack-por
+	  ```
+6. **Executar o script**:
+	```bash
+	python read.py
+	# Opcionalmente:
+	python3 read.py
+	```
 
 # Requisitos dos Desafios
 
