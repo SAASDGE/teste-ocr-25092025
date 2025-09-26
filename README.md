@@ -25,7 +25,7 @@ Para analisar a fatura e realizar a extração das informações você deve util
 
 # Documentação do Teste
 
-A solução desenvolvida para a extração de dados da fatura de energia emprega uma arquitetura modular no script `read.py`, garantindo a separação de responsabilidades e a clareza do processo. A metodologia pode ser dividida nas seguintes etapas:
+O código (script) desenvolvido para o teste de extração de dados em imagem de fatura de energia segue estrutura modular, separada por funções, e pode ser dividida nas seguintes etapas:
 
 1. **Leitura e Extração de Texto:** Inicialmente, a função `extrair_texto` utiliza a biblioteca **OpenCV** para carregar a imagem e convertê-la para escala de cinza, um pré-processamento que otimiza o reconhecimento de texto. Em seguida, a biblioteca **EasyOCR** analisa a imagem e extrai seu conteúdo, convertendo os dados visuais em uma única string de texto bruto.
 2. **Análise com Expressões Regulares:** Com o texto em mãos, a função `extrair_dados` aplica um conjunto de **e****xpressões regulares**. Cada padrão foi cuidadosamente desenvolvido após uma análise manual do texto extraído para identificar e capturar de forma precisa cada um dos seis campos de dados solicitados.
