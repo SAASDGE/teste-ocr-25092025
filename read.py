@@ -5,6 +5,13 @@ import pandas as pd
 import re
 import cv2
 
+"""
+Teste Técnico 2 - Extração de informações
+Autor : Mateus Mendes da Silva
+Data : 26/09/2025
+"""
+
+#Configurando Tesseract
 pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
 
@@ -90,7 +97,10 @@ def extrair_dados(imagem):
 
 
 if __name__ == "__main__":
-    df = extrair_dados('fatura.jpg')
+
+    imagem = './fatura.jpg'
+    df = extrair_dados(imagem)
+    # Coloca o dataframe na vertical como no enunciado do teste
     vertical_df = df.T.reset_index()
     vertical_df.columns = ["Campo", "Valor"]
 
