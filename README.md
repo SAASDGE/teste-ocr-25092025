@@ -33,7 +33,7 @@ O código (script) desenvolvido para o teste de extração de dados em imagem de
 
 ### Como Executar o Projeto
 
-Para executar esta solução e extrair os dados da fatura, siga os passos abaixo no seu terminal:
+Para executar este projeto e extrair os dados da fatura, siga os passos abaixo no seu terminal:
 
 #### 1. Clone o repositório
    ```
