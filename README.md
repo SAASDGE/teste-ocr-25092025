@@ -35,19 +35,19 @@ O código (script) desenvolvido para o teste de extração de dados em imagem de
 
 Para executar esta solução e extrair os dados da fatura, siga os passos abaixo no seu terminal:
 
-1. **Clone o repositório:**
+#### 1. Clone o repositório
    ```
    git clone <URL_DO_SEU_FORK>
    cd <NOME_DO_REPOSITORIO>
    ```
 
-#### 1. Crie o ambiente virtual
+#### 2. Crie o ambiente virtual
 
 ```
 python -m venv venv
 ```
 
-#### 2. Ative o ambiente
+#### 3. Ative o ambiente
 
 ###### (Windows)
 
@@ -61,13 +61,13 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-#### 3. Instale as dependências do projeto através do requirements
+#### 4. Instale as dependências do projeto através do requirements
 
 ```
 pip install -r requirements.txt
 ```
 
-#### 4. Execute o projeto
+#### 5. Execute o projeto
 
 ```
 python read.py
