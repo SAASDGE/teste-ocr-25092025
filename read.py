@@ -78,7 +78,7 @@ def extrair_dados(imagem):
     match = re.search(padrao_saldo, texto_extraido)
     if match:
         saldo_atual = match.group().split(" ")[4]
-        data["Saldo"] = [saldo_atual]
+        data["Saldo de Geracao"] = [saldo_atual]
     else:
         saldo_atual = None
 
@@ -87,9 +87,9 @@ def extrair_dados(imagem):
     padrao_compensacao = r"Energia compensada GD II kWh\s*(\d+)"
     match = re.search(padrao_compensacao, texto_extraido)
     if match:
-        data["Compensacao"] = [match.group().split(" ")[5]]
+        data["Energia Compensada"] = [match.group().split(" ")[5]]
     else:
-        data["Compensacao"] = [None]
+        data["Energia Compensada"] = [None]
 
     #Criando DataFrame
     dataframe = pd.DataFrame(data)
