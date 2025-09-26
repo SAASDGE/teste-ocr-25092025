@@ -23,7 +23,51 @@ Para analisar a fatura e realizar a extração das informações você deve util
 
 # Documentação do Teste
 
-- Escreva a documentação do teste abaixo.
+## Descrição do Problema :
+
+A partir de uma imagem de uma fatura, deve se extrair suas informações via OCR, e tratar seus dados para um dataframe do pandas, as informações necessárias incluem :  Mês/Ano, quantidade de energia elétrica consumida, quantidade de energia elétrica compensada, valor a pagar a distribuidora e saldo de crédito de energia acumulado.
+
+## Solução do Problema :
+Para a resolução desse problema, decidi utilizar as bibliotecas OpenCV, para o tratamento inicial da imagem, para a extração do texto utilizei a biblioteca pytesseract, com o Tesseract OCR, e para tratamento dos textos extraidos utilizei regex e estruturas de dados do Python.
+
+## Python e Bibliotecas :
+Python - 3.13
+
+Opencv - 4.12
+
+pytesseract - 0.3.13
+
+## Como executar :
+Clone esse repositório com :
+```bash
+git clone https://github.com/MateusMendes0/teste-ocr-25092025.git
+```
+
+Também é necessário instalar o Tesseract para o reconhecimento do texto no diretório padrão, disponível em :
+
+```
+https://github.com/UB-Mannheim/tesseract/wiki
+```
+
+No diretório do projeto : 
+1. Criar o ambiente virtual:
+```bash
+python -m venv .venv
+```
+2. Ativar o ambiente:
+
+```bash
+./.venv/Scripts/activate
+```
+3. Instalar as dependencias
+```bash
+pip install -r requirements.txt
+```
+4. Executar o projeto
+```bash
+python read.py
+```
+
 
 # Requisitos dos Desafios
 
